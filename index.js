@@ -1,19 +1,41 @@
-const express=require('express');
-const cors=require('cors');
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+require('dotenv').config();
 
-const PORT=8000;
-const app=express();
+// Import routes
+const userRoutes = require('./routes/userRoutes');
+const foodRoutes = require('./routes/foodRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 
-// middleware
-app.use(cors()); //cross origins
-app.use(express.json()); //accept json
+const app = express();
+
+// Middleware
+app.use(cors()); // Optional: allow cross-origin requests
+app.use(express.json()); // Parse JSON bodies
+
+// Start Server
+const PORT = process.env.PORT || 5001;
+
+// MongoDB Connection
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log('MongoDB connected'))
+    .catch((err) => console.error('MongoDB connection error:', err));
 
 
-app.get("/",(request,response)=>{
-    return response.status(200).send("<h1>WELCOME TO NODE JS SERVER</h1>");
+// API Routes
+app.use('/api/users', userRoutes);
+app.use('/api/foods', foodRoutes);
+app.use('/api/orders', orderRoutes);
+
+
+//to check api runnig on browser
+app.get('/', (req, res) => {
+    res.send('<h1>Campus Canteen API is running </h1>');
 });
 
 
-app.listen(PORT,()=>{
-    console.log(`Server is Running ${PORT}`);
+app.listen(PORT, () => {
+    console.log(`Server running ${PORT}`);
 });
+

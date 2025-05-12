@@ -27,37 +27,36 @@ This is a simple Express.js backend for managing a **campus canteen system**, in
 
 ## 📁 Folder Structure
 
-project-root/
-├── models/ # Mongoose Schemas
-├── controllers/ # API logic
-├── routes/ # Route definitions
-├── .env # Environment variables
-├── index.js # Entry point
-└── README.md
+project-root/ <br>
+├── models/   # Mongoose Schemas <br>
+├── controllers/   # API logic <br>
+├── routes/   # Route definitions <br>
+├── .env   # Environment variables <br>
+├── index.js   # Entry point <br>
+└── README.md <br>
 
 
 ---
 
-📬 API Endpoints
+## 📬 API Endpoints
 
-Users
-GET /api/users
-POST /api/users
-PUT /api/users/:id
-DELETE /api/users/:id
-
-Food
-GET /api/foods
-POST /api/foods
-PUT /api/foods/:id
-DELETE /api/foods/:id
-
-Orders
-
-GET /api/orders
-POST /api/orders
-PUT /api/orders/:id
-DELETE /api/orders/:id
+Users <br>
+GET /api/users <br>
+POST /api/users <br>
+PUT /api/users/:id <br>
+DELETE /api/users/:id <br>
+<br>
+Food <br>
+GET /api/foods <br>
+POST /api/foods <br>
+PUT /api/foods/:id <br>
+DELETE /api/foods/:id <br>
+<br>
+Orders <br>
+GET /api/orders <br>
+POST /api/orders <br>
+PUT /api/orders/:id <br>
+DELETE /api/orders/:id <br>
 
 
 

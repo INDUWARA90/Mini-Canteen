@@ -16,6 +16,7 @@ exports.getAllFoods = async (req, res) => {
   try {
     const foods = await Food.find();
     res.json(foods);
+    res.send(json(foods));
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -27,6 +28,7 @@ exports.getFoodById = async (req, res) => {
     const food = await Food.findById(req.params.id);
     if (!food) return res.status(404).json({ message: 'Food not found' });
     res.json(food);
+    res.send(json(food));
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

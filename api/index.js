@@ -17,11 +17,13 @@ app.use(express.json()); // Parse JSON bodies
 // Start Server
 const PORT = process.env.PORT || 5001;
 
-// MongoDB Connection
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log('MongoDB connected'))
-    .catch((err) => console.error('MongoDB connection error:', err));
-
+// Connect once
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log("✅ MongoDB connected"))
+.catch(err => console.error("❌ DB error:", err));
 
 // API Routes
 app.use('/api/users', userRoutes);

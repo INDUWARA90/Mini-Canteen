@@ -16,6 +16,7 @@ exports.getAllOrders = async (req, res) => {
   try {
     const orders = await Order.find().populate('userId items.foodId');
     res.json(orders);
+    res.send(json(orders));
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -27,6 +28,7 @@ exports.getOrderById = async (req, res) => {
     const order = await Order.findById(req.params.id).populate('userId items.foodId');
     if (!order) return res.status(404).json({ message: 'Order not found' });
     res.json(order);
+    res.send(json(order));
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
